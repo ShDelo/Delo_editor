@@ -234,21 +234,12 @@ object FormEdit: TFormEdit
         ReadOnly = True
         TabOrder = 0
         SkinData.SkinSection = 'EDIT'
-        BoundLabel.Indent = 0
-        BoundLabel.Font.Charset = DEFAULT_CHARSET
-        BoundLabel.Font.Color = clWindowText
-        BoundLabel.Font.Height = -11
-        BoundLabel.Font.Name = 'MS Sans Serif'
-        BoundLabel.Font.Style = []
-        BoundLabel.Layout = sclLeft
-        BoundLabel.MaxWidth = 0
-        BoundLabel.UseSkinColor = True
       end
       object cbBannerRight: TsCheckBox
         Left = 10
         Top = 52
-        Width = 182
-        Height = 19
+        Width = 179
+        Height = 17
         TabStop = False
         Caption = #1054#1090#1086#1073#1088#1072#1078#1072#1090#1100' '#1073#1072#1085#1085#1077#1088' '#1074' '#1088#1086#1090#1072#1094#1080#1080
         TabOrder = 1
@@ -330,21 +321,12 @@ object FormEdit: TFormEdit
         ParentFont = False
         TabOrder = 0
         SkinData.SkinSection = 'EDIT'
-        BoundLabel.Indent = 0
-        BoundLabel.Font.Charset = DEFAULT_CHARSET
-        BoundLabel.Font.Color = clWindowText
-        BoundLabel.Font.Height = -11
-        BoundLabel.Font.Name = 'MS Sans Serif'
-        BoundLabel.Font.Style = []
-        BoundLabel.Layout = sclLeft
-        BoundLabel.MaxWidth = 0
-        BoundLabel.UseSkinColor = True
       end
       object cbReklamaText: TsCheckBox
         Left = 10
         Top = 52
-        Width = 227
-        Height = 19
+        Width = 224
+        Height = 17
         TabStop = False
         Caption = #1054#1090#1086#1073#1088#1072#1078#1072#1090#1100' '#1073#1077#1075#1091#1097#1091#1102' '#1089#1090#1088#1086#1082#1091' '#1074' '#1088#1086#1090#1072#1094#1080#1080
         TabOrder = 1
@@ -464,21 +446,12 @@ object FormEdit: TFormEdit
         ReadOnly = True
         TabOrder = 0
         SkinData.SkinSection = 'EDIT'
-        BoundLabel.Indent = 0
-        BoundLabel.Font.Charset = DEFAULT_CHARSET
-        BoundLabel.Font.Color = clWindowText
-        BoundLabel.Font.Height = -11
-        BoundLabel.Font.Name = 'MS Sans Serif'
-        BoundLabel.Font.Style = []
-        BoundLabel.Layout = sclLeft
-        BoundLabel.MaxWidth = 0
-        BoundLabel.UseSkinColor = True
       end
       object cbBannerMain: TsCheckBox
         Left = 10
         Top = 52
-        Width = 240
-        Height = 19
+        Width = 237
+        Height = 17
         TabStop = False
         Caption = #1054#1090#1086#1073#1088#1072#1078#1072#1090#1100' '#1073#1072#1085#1085#1077#1088' '#1087#1088#1080' '#1086#1090#1082#1088#1099#1090#1080#1080' '#1092#1080#1088#1084#1099
         TabOrder = 1
@@ -560,21 +533,12 @@ object FormEdit: TFormEdit
         ParentFont = False
         TabOrder = 0
         SkinData.SkinSection = 'EDIT'
-        BoundLabel.Indent = 0
-        BoundLabel.Font.Charset = DEFAULT_CHARSET
-        BoundLabel.Font.Color = clWindowText
-        BoundLabel.Font.Height = -11
-        BoundLabel.Font.Name = 'MS Sans Serif'
-        BoundLabel.Font.Style = []
-        BoundLabel.Layout = sclLeft
-        BoundLabel.MaxWidth = 0
-        BoundLabel.UseSkinColor = True
       end
       object cbReklamaSite: TsCheckBox
         Left = 10
         Top = 52
-        Width = 221
-        Height = 19
+        Width = 218
+        Height = 17
         TabStop = False
         Caption = #1054#1090#1082#1088#1099#1074#1072#1090#1100' '#1089#1072#1081#1090' '#1087#1088#1080' '#1086#1090#1082#1088#1099#1090#1080#1080' '#1092#1080#1088#1084#1099
         TabOrder = 1
@@ -694,21 +658,12 @@ object FormEdit: TFormEdit
         ReadOnly = True
         TabOrder = 0
         SkinData.SkinSection = 'EDIT'
-        BoundLabel.Indent = 0
-        BoundLabel.Font.Charset = DEFAULT_CHARSET
-        BoundLabel.Font.Color = clWindowText
-        BoundLabel.Font.Height = -11
-        BoundLabel.Font.Name = 'MS Sans Serif'
-        BoundLabel.Font.Style = []
-        BoundLabel.Layout = sclLeft
-        BoundLabel.MaxWidth = 0
-        BoundLabel.UseSkinColor = True
       end
       object cbBannerMainRubr: TsCheckBox
         Left = 10
         Top = 52
-        Width = 245
-        Height = 19
+        Width = 242
+        Height = 17
         TabStop = False
         Caption = #1054#1090#1086#1073#1088#1072#1078#1072#1090#1100' '#1073#1072#1085#1085#1077#1088' '#1087#1088#1080' '#1086#1090#1082#1088#1099#1090#1080#1080' '#1088#1091#1073#1088#1080#1082#1080
         TabOrder = 1
@@ -735,14 +690,7 @@ object FormEdit: TFormEdit
       TabOrder = 0
       SkinData.SkinSection = 'EDIT'
       BoundLabel.Indent = 4
-      BoundLabel.Font.Charset = DEFAULT_CHARSET
-      BoundLabel.Font.Color = clWindowText
-      BoundLabel.Font.Height = -11
-      BoundLabel.Font.Name = 'MS Sans Serif'
-      BoundLabel.Font.Style = []
       BoundLabel.Layout = sclTopLeft
-      BoundLabel.MaxWidth = 0
-      BoundLabel.UseSkinColor = True
     end
     object gbReklamaDoc: TsGroupBox
       Left = 8
@@ -853,21 +801,12 @@ object FormEdit: TFormEdit
         ParentFont = False
         TabOrder = 0
         SkinData.SkinSection = 'EDIT'
-        BoundLabel.Indent = 0
-        BoundLabel.Font.Charset = DEFAULT_CHARSET
-        BoundLabel.Font.Color = clWindowText
-        BoundLabel.Font.Height = -11
-        BoundLabel.Font.Name = 'MS Sans Serif'
-        BoundLabel.Font.Style = []
-        BoundLabel.Layout = sclLeft
-        BoundLabel.MaxWidth = 0
-        BoundLabel.UseSkinColor = True
       end
       object cbReklamaDoc: TsCheckBox
         Left = 10
         Top = 52
-        Width = 138
-        Height = 19
+        Width = 135
+        Height = 17
         TabStop = False
         Caption = #1040#1082#1090#1080#1074#1080#1088#1086#1074#1072#1090#1100' '#1089#1090#1072#1090#1100#1102
         TabOrder = 1
