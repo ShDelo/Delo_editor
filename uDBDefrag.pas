@@ -236,7 +236,7 @@ begin
   Q.Database := FormMain.IBDatabase1;
   Q.Transaction := FormMain.IBTransaction1;
   Q.Close;
-  Q.SQL.Text := 'select ID from BASE where lower(' + field + ') like :STR';
+  Q.SQL.Text := 'select ID from BASE where lower(' + field + ') like :STR rows 1';
   Q.ParamByName('STR').AsString := match;
   Q.Open;
   if Q.RecordCount > 0 then
@@ -264,7 +264,7 @@ var
   Query: TIBQuery;
   CurrentProgress, i: Integer;
   isDeleted: boolean;
-  strDirType, strID: string;
+  strDirType, strID, strDIR: string;
 begin
   ToggleButtons(false);
   PrepareGrid;
@@ -310,8 +310,9 @@ begin
       strDirType := 'Неизвестно';
 
       strID := Query.FieldByName('ID').AsString;
+      strDIR := Trim(Query.FieldByName('DIR').AsString);
 
-      if Trim(Query.FieldByName('DIR').AsString) = 'CURATOR' then
+      if strDIR = 'CURATOR' then
       begin
         if not CheckDirectoryIsInUse('CURATOR', '%#' + strID + '$%') then
         begin
@@ -320,7 +321,7 @@ begin
           strDirType := 'Куратор';
         end;
       end
-      else if Trim(Query.FieldByName('DIR').AsString) = 'RUBRIKATOR' then
+      else if strDIR = 'RUBRIKATOR' then
       begin
         if not CheckDirectoryIsInUse('RUBR', '%#' + strID + '$%') then
         begin
@@ -329,7 +330,7 @@ begin
           strDirType := 'Рубрика';
         end;
       end
-      else if Trim(Query.FieldByName('DIR').AsString) = 'TYPE' then
+      else if strDIR = 'TYPE' then
       begin
         if not CheckDirectoryIsInUse('TYPE', '%#' + strID + '$%') then
         begin
@@ -338,7 +339,7 @@ begin
           strDirType := 'Тип фирмы';
         end;
       end
-      else if Trim(Query.FieldByName('DIR').AsString) = 'NAPRAVLENIE' then
+      else if strDIR = 'NAPRAVLENIE' then
       begin
         if not CheckDirectoryIsInUse('NAPRAVLENIE', '%#' + strID + '$%') then
         begin
@@ -347,7 +348,7 @@ begin
           strDirType := 'Деятельность';
         end;
       end
-      else if Trim(Query.FieldByName('DIR').AsString) = 'OFFICETYPE' then
+      else if strDIR = 'OFFICETYPE' then
       begin
         if not CheckDirectoryIsInUse('ADRES', '%#@' + strID + '$%') then
         begin
@@ -356,7 +357,7 @@ begin
           strDirType := 'Тип адреса';
         end;
       end
-      else if Trim(Query.FieldByName('DIR').AsString) = 'COUNTRY' then
+      else if strDIR = 'COUNTRY' then
       begin
         if not CheckDirectoryIsInUse('ADRES', '%#&' + strID + '$%') then
         begin
@@ -365,7 +366,7 @@ begin
           strDirType := 'Страна';
         end;
       end
-      else if Trim(Query.FieldByName('DIR').AsString) = 'GOROD' then
+      else if strDIR = 'GOROD' then
       begin
         if not CheckDirectoryIsInUse('ADRES', '%#^' + strID + '$%') then
         begin
