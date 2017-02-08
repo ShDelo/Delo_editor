@@ -5,8 +5,8 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Buttons, NxColumns, NxColumnClasses, NxScrollControl,
-  NxCustomGridControl, NxCustomGrid, NxGrid, IBDatabase, DB, IBCustomDataSet,
-  IBQuery, XLSFile, XLSWorkbook, XLSFormat, ComObj;
+  NxCustomGridControl, NxCustomGrid, NxGrid, IBC, DB, IBCustomDataSet,
+  XLSFile, XLSWorkbook, XLSFormat, ComObj;
 
 procedure BackupDBFile;
 procedure XLS_Init;
@@ -206,12 +206,12 @@ end;
 
 procedure DeleteDirectoryByID(table, id: string);
 var
-  Q: TIBQuery;
+  Q: TIBCQuery;
 begin
   if (Trim(table) = EmptyStr) or (Trim(id) = EmptyStr) then
     exit;
-  Q := TIBQuery.Create(nil);
-  Q.Database := FormMain.IBDatabase1;
+  Q := TIBCQuery.Create(nil);
+  Q.Connection := FormMain.IBDatabase1;
   Q.Transaction := FormMain.IBTransaction1;
   Q.Close;
   Q.SQL.Text := 'delete from ' + table + ' where ID = :ID';
@@ -227,13 +227,13 @@ end;
 
 function CheckDirectoryIsInUse(field, match: string): boolean;
 var
-  Q: TIBQuery;
+  Q: TIBCQuery;
 begin
   result := false;
   if (Trim(field) = EmptyStr) or (Trim(match) = EmptyStr) then
     exit;
-  Q := TIBQuery.Create(nil);
-  Q.Database := FormMain.IBDatabase1;
+  Q := TIBCQuery.Create(nil);
+  Q.Connection := FormMain.IBDatabase1;
   Q.Transaction := FormMain.IBTransaction1;
   Q.Close;
   Q.SQL.Text := 'select ID from BASE where lower(' + field + ') like :STR rows 1';
@@ -261,7 +261,7 @@ end;
 
 procedure DoDBDefrag(bBackUp: boolean = false);
 var
-  Query: TIBQuery;
+  Query: TIBCQuery;
   CurrentProgress, i: Integer;
   isDeleted: boolean;
   strDirType, strID, strDIR: string;
@@ -272,8 +272,8 @@ begin
   if bBackUp = true then
     BackupDBFile;
 
-  Query := TIBQuery.Create(nil);
-  Query.Database := FormMain.IBDatabase1;
+  Query := TIBCQuery.Create(nil);
+  Query.Connection := FormMain.IBDatabase1;
   Query.Transaction := FormMain.IBTransaction1;
   Query.SQL.Text := 'SELECT t1.id, t1.name, ''CURATOR'' as DIR FROM CURATOR as t1 UNION ALL ' +
     'SELECT t2.id, t2.name, ''RUBRIKATOR'' as DIR FROM RUBRIKATOR as t2 UNION ALL ' +
@@ -292,7 +292,7 @@ begin
       exit;
     end;
   end;
-  Query.FetchAll;
+  Query.FetchAll := True;
 
   with FormMain do
   begin

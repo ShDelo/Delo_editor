@@ -2681,23 +2681,20 @@ object FormMain: TFormMain
     Left = 864
     Top = 504
   end
-  object IBQuery1: TIBQuery
-    BufferChunks = 1000
-    CachedUpdates = False
+  object IBQuery1: TIBCQuery
+    AutoCommit = False
     Left = 733
     Top = 505
   end
-  object IBDatabase1: TIBDatabase
+  object IBDatabase1: TIBCConnection
+    Port = '3050'
+    AutoCommit = False
     LoginPrompt = False
-    IdleTimer = 0
-    SQLDialect = 3
-    TraceFlags = []
     Left = 765
     Top = 505
   end
-  object IBTransaction1: TIBTransaction
-    Active = False
-    AutoStopAction = saNone
+  object IBTransaction1: TIBCTransaction
+    DefaultConnection = IBDatabase1
     Left = 797
     Top = 505
   end

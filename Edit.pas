@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ExtCtrls, sPanel, StdCtrls, sCheckBox, sEdit, sGroupBox,
   Buttons, sSpeedButton, sLabel, NxScrollControl, NxCustomGridControl,
-  NxCustomGrid, NxGrid;
+  NxCustomGrid, NxGrid, DBAccess;
 
 type
   TFormEdit = class(TForm)
@@ -185,7 +185,7 @@ begin
     SQL.Text := 'update BASE set REKLAMA = :REKLAMA where ID = :ID';
     ParamByName('REKLAMA').AsString := finalStr;
     ParamByName('ID').AsString := lblID.Caption;
-    ExecSQL;
+    Execute;
     FormMain.IBTransaction1.CommitRetaining;
   end;
   if FormMain.SGFirm.FindText(0, lblID.Caption, [soCaseInsensitive, soExactMatch]) then
@@ -211,7 +211,7 @@ begin
     SQL.Text := 'update RUBRIKATOR set REKLAMA = :REKLAMA where ID = :ID';
     ParamByName('REKLAMA').AsString := finalStr;
     ParamByName('ID').AsString := lblID.Caption;
-    ExecSQL;
+    Execute;
     FormMain.IBTransaction1.CommitRetaining;
   end;
   if FormMain.SGRubr.FindText(0, lblID.Caption, [soCaseInsensitive, soExactMatch]) then

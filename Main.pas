@@ -4,11 +4,10 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Buttons, NxColumns, NxColumnClasses, NxScrollControl,
+  Dialogs, Buttons, NxColumns, NxColumnClasses, NxScrollControl, StrUtils,
   NxCustomGridControl, NxCustomGrid, NxGrid, ComCtrls, sPageControl,
-  StdCtrls, NxEdit, sSpeedButton, ExtCtrls, sPanel, sSkinManager,
-  sSkinProvider, IBDatabase, DB, IBCustomDataSet, IBQuery, StrUtils, sEdit,
-  sCheckBox, sGauge;
+  StdCtrls, NxEdit, sSpeedButton, ExtCtrls, sPanel, sSkinManager, sEdit,
+  sSkinProvider, sCheckBox, sGauge, DBAccess, IBC, MemDS, DB;
 
 type
   TFormMain = class(TForm)
@@ -25,9 +24,6 @@ type
     sSkinProvider1: TsSkinProvider;
     sSkinManager1: TsSkinManager;
     sTabSheet2: TsTabSheet;
-    IBQuery1: TIBQuery;
-    IBDatabase1: TIBDatabase;
-    IBTransaction1: TIBTransaction;
     SGRubr: TNextGrid;
     NxTextColumn4: TNxTextColumn;
     NxTextColumn5: TNxTextColumn;
@@ -43,6 +39,9 @@ type
     btnEmailCheck: TsSpeedButton;
     btnWEBCheck: TsSpeedButton;
     btnDBDefrag: TsSpeedButton;
+    IBQuery1: TIBCQuery;
+    IBDatabase1: TIBCConnection;
+    IBTransaction1: TIBCTransaction;
     procedure FormCreate(Sender: TObject);
     procedure GetFirmList(Request, ID: string; ClearRows: Boolean);
     procedure GetRubrList(Request, ID: string; ClearRows: Boolean);
@@ -79,13 +78,13 @@ uses Edit, uDBDefrag;
 procedure TFormMain.FormCreate(Sender: TObject);
 begin
   AppPath := ExtractFilePath(Application.ExeName);
-  IBDatabase1.DatabaseName := AppPath + MainDB;
+  IBDatabase1.Database := AppPath + MainDB;
   IBDatabase1.Params.Clear;
   IBDatabase1.Params.Add('user_name=' + FBUserName);
   IBDatabase1.Params.Add('password=' + FBUserPassword);
-  IBQuery1.Database := IBDatabase1;
+  IBQuery1.Connection := IBDatabase1;
   IBQuery1.Transaction := IBTransaction1;
-  IBTransaction1.DefaultDatabase := IBDatabase1;
+  IBTransaction1.DefaultConnection := IBDatabase1;
   try
     IBDatabase1.Connected := True;
   except
@@ -131,7 +130,7 @@ begin
   if IBQuery1.ParamCount > 0 then
     IBQuery1.Params[0].AsString := ID;
   IBQuery1.Open;
-  IBQuery1.FetchAll;
+  IBQuery1.FetchAll := True;
   if IBQuery1.RecordCount = 0 then
     exit;
   SGFirm.BeginUpdate;
@@ -190,7 +189,7 @@ begin
   if IBQuery1.ParamCount > 0 then
     IBQuery1.Params[0].AsString := ID;
   IBQuery1.Open;
-  IBQuery1.FetchAll;
+  IBQuery1.FetchAll := True;
   if IBQuery1.RecordCount = 0 then
     exit;
   SGRubr.BeginUpdate;
@@ -329,7 +328,7 @@ begin
     IBQuery1.SQL.Text := 'select * from BASE where ID = :ID';
     IBQuery1.Params[0].AsString := ID;
     IBQuery1.Open;
-    IBQuery1.FetchAll;
+    IBQuery1.FetchAll := True;
     FormEdit.ClearEdits;
     FormEdit.lblID.Caption := IBQuery1.FieldByName('ID').AsString;
     FormEdit.editName.Text := IBQuery1.FieldByName('NAME').AsString;
@@ -365,7 +364,7 @@ begin
     IBQuery1.SQL.Text := 'select * from RUBRIKATOR where ID = :ID';
     IBQuery1.Params[0].AsString := ID;
     IBQuery1.Open;
-    IBQuery1.FetchAll;
+    IBQuery1.FetchAll := True;
     FormEdit.ClearEdits;
     FormEdit.lblID.Caption := IBQuery1.FieldByName('ID').AsString;
     FormEdit.editName.Text := IBQuery1.FieldByName('NAME').AsString;
@@ -406,7 +405,7 @@ begin
       IBQuery1.SQL.Text := 'select * from RUBRIKATOR where ID = :ID';
     IBQuery1.Params[0].AsString := ID;
     IBQuery1.Open;
-    IBQuery1.FetchAll;
+    IBQuery1.FetchAll := True;
     FormEdit.ClearEdits;
     FormEdit.lblID.Caption := IBQuery1.FieldByName('ID').AsString;
     FormEdit.editName.Text := IBQuery1.FieldByName('NAME').AsString;
@@ -545,6 +544,7 @@ begin
 end;
 
 function TFormMain.IsValidEmail(const Value: string): Boolean;
+
   function CheckAllowed(const s: string): Boolean;
   var
     i: integer;
@@ -576,6 +576,7 @@ begin
 end;
 
 function TFormMain.IsValidWeb(const Value: string): Boolean;
+
   function CheckAllowed(const s: string): Boolean;
   var
     i: integer;
@@ -637,7 +638,7 @@ begin
   if TsSpeedButton(Sender).Name = 'btnWEBCheck' then
     IBQuery1.SQL.Text := 'select ID,NAME,WEB from BASE';
   IBQuery1.Open;
-  IBQuery1.FetchAll;
+  IBQuery1.FetchAll := True;
   gaugeProgress.MinValue := 0;
   gaugeProgress.MaxValue := IBQuery1.RecordCount;
   gaugeProgress.Visible := IBQuery1.RecordCount > 0;
