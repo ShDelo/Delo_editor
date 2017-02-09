@@ -2682,6 +2682,7 @@ object FormMain: TFormMain
     Top = 504
   end
   object IBQuery1: TIBCQuery
+    FetchRows = 1
     AutoCommit = False
     Left = 733
     Top = 505

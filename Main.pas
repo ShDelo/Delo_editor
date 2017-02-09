@@ -9,6 +9,8 @@ uses
   StdCtrls, NxEdit, sSpeedButton, ExtCtrls, sPanel, sSkinManager, sEdit,
   sSkinProvider, sCheckBox, sGauge, DBAccess, IBC, MemDS, DB;
 
+function QueryCreate: TIBCQuery;
+
 type
   TFormMain = class(TForm)
     sPanel1: TsPanel;
@@ -74,6 +76,18 @@ implementation
 uses Edit, uDBDefrag;
 
 {$R *.dfm}
+
+function QueryCreate: TIBCQuery;
+var
+  Query: TIBCQuery;
+begin
+  Query := TIBCQuery.Create(nil);
+  Query.Connection := FormMain.IBDatabase1;
+  Query.Transaction := FormMain.IBTransaction1;
+  Query.AutoCommit := False;
+  Query.FetchRows := 1;
+  result := Query;
+end;
 
 procedure TFormMain.FormCreate(Sender: TObject);
 begin
