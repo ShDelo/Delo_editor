@@ -38,12 +38,12 @@ object FormMain: TFormMain
         Top = 1
         Width = 109
         Height = 25
+        Align = alRight
         Caption = #1053#1072#1089#1090#1088#1086#1081#1082#1080
         Flat = True
         NumGlyphs = 2
         Spacing = 3
         OnClick = btnSettingsClick
-        Align = alRight
         SkinData.SkinSection = 'PAGECONTROL'
         ImageIndex = 0
       end
@@ -98,6 +98,7 @@ object FormMain: TFormMain
         ParentFont = False
         TabOrder = 0
         OnChange = editSearchChange
+        ExplicitHeight = 24
       end
     end
     object sPageControl1: TsPageControl
@@ -119,10 +120,13 @@ object FormMain: TFormMain
           Top = 0
           Width = 906
           Height = 518
+          Touch.InteractiveGestures = [igPan, igPressAndTap]
+          Touch.InteractiveGestureOptions = [igoPanSingleFingerHorizontal, igoPanSingleFingerVertical, igoPanInertia, igoPanGutter, igoParentPassthrough]
           Align = alClient
           AppearanceOptions = [aoHideFocus, aoHighlightSlideCells]
           AutoScroll = True
           BorderStyle = bsNone
+          Caption = ''
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -11
@@ -190,6 +194,11 @@ object FormMain: TFormMain
               3C2C27723A2905490000007E88512876392A4B233F3E1A490000007887856B70
               86464019213B14000000006750115C696E75714F2F2B49000000007D664D0B04
               0C2255563D250000000000007A5B575F595A646F6D0000000000}
+            Header.Font.Charset = DEFAULT_CHARSET
+            Header.Font.Color = clWindowText
+            Header.Font.Height = -11
+            Header.Font.Name = 'Tahoma'
+            Header.Font.Style = []
             Options = [coCanClick, coCanInput, coCanSort, coPublicUsing]
             ParentFont = False
             Position = 0
@@ -240,6 +249,11 @@ object FormMain: TFormMain
               508000000000000000003040B0C080A0FFFF2058FFFF203070D0B0585050E070
               70FFC06050FF9048405000000000000000000000000000000000000000000000
               000000000000000000006068C0B03040B0C03040B0C06068B0FF}
+            Header.Font.Charset = DEFAULT_CHARSET
+            Header.Font.Color = clWindowText
+            Header.Font.Height = -11
+            Header.Font.Name = 'Tahoma'
+            Header.Font.Style = []
             ParentFont = False
             Position = 1
             Sorted = True
@@ -254,6 +268,11 @@ object FormMain: TFormMain
             Font.Name = 'MS Sans Serif'
             Font.Style = []
             Header.Caption = #1041#1072#1085#1085#1077#1088' ('#1088#1086#1090#1072#1094#1080#1103')'
+            Header.Font.Charset = DEFAULT_CHARSET
+            Header.Font.Color = clWindowText
+            Header.Font.Height = -11
+            Header.Font.Name = 'Tahoma'
+            Header.Font.Style = []
             ParentFont = False
             Position = 2
             SortType = stAlphabetic
@@ -267,6 +286,11 @@ object FormMain: TFormMain
             Font.Name = 'MS Sans Serif'
             Font.Style = []
             Header.Caption = #1041#1072#1085#1085#1077#1088' ('#1086#1089#1085#1086#1074#1085#1086#1081')'
+            Header.Font.Charset = DEFAULT_CHARSET
+            Header.Font.Color = clWindowText
+            Header.Font.Height = -11
+            Header.Font.Name = 'Tahoma'
+            Header.Font.Style = []
             ParentFont = False
             Position = 3
             SortType = stAlphabetic
@@ -275,6 +299,11 @@ object FormMain: TFormMain
           object NxTextColumn8: TNxTextColumn
             DefaultWidth = 110
             Header.Caption = #1041#1077#1075#1091#1097#1072#1103' '#1089#1090#1088#1086#1082#1072
+            Header.Font.Charset = DEFAULT_CHARSET
+            Header.Font.Color = clWindowText
+            Header.Font.Height = -11
+            Header.Font.Name = 'Tahoma'
+            Header.Font.Style = []
             Position = 4
             SortType = stAlphabetic
             Width = 110
@@ -282,6 +311,11 @@ object FormMain: TFormMain
           object NxTextColumn9: TNxTextColumn
             DefaultWidth = 110
             Header.Caption = #1057#1072#1081#1090
+            Header.Font.Charset = DEFAULT_CHARSET
+            Header.Font.Color = clWindowText
+            Header.Font.Height = -11
+            Header.Font.Name = 'Tahoma'
+            Header.Font.Style = []
             Position = 5
             SortType = stAlphabetic
             Width = 110
@@ -289,6 +323,11 @@ object FormMain: TFormMain
           object NxTextColumn10: TNxTextColumn
             DefaultWidth = 110
             Header.Caption = #1057#1090#1072#1090#1100#1103
+            Header.Font.Charset = DEFAULT_CHARSET
+            Header.Font.Color = clWindowText
+            Header.Font.Height = -11
+            Header.Font.Name = 'Tahoma'
+            Header.Font.Style = []
             Position = 6
             SortType = stAlphabetic
             Width = 110
@@ -297,15 +336,22 @@ object FormMain: TFormMain
       end
       object sTabSheet2: TsTabSheet
         Caption = #1056#1091#1073#1088#1080#1082#1080
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object SGRubr: TNextGrid
           Left = 0
           Top = 0
           Width = 906
           Height = 518
+          Touch.InteractiveGestures = [igPan, igPressAndTap]
+          Touch.InteractiveGestureOptions = [igoPanSingleFingerHorizontal, igoPanSingleFingerVertical, igoPanInertia, igoPanGutter, igoParentPassthrough]
           Align = alClient
           AppearanceOptions = [aoHideFocus, aoHighlightSlideCells]
           AutoScroll = True
           BorderStyle = bsNone
+          Caption = ''
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -11
@@ -373,6 +419,11 @@ object FormMain: TFormMain
               3C2C27723A2905490000007E88512876392A4B233F3E1A490000007887856B70
               86464019213B14000000006750115C696E75714F2F2B49000000007D664D0B04
               0C2255563D250000000000007A5B575F595A646F6D0000000000}
+            Header.Font.Charset = DEFAULT_CHARSET
+            Header.Font.Color = clWindowText
+            Header.Font.Height = -11
+            Header.Font.Name = 'Tahoma'
+            Header.Font.Style = []
             Options = [coCanClick, coCanInput, coCanSort, coPublicUsing]
             ParentFont = False
             Position = 0
@@ -423,6 +474,11 @@ object FormMain: TFormMain
               508000000000000000003040B0C080A0FFFF2058FFFF203070D0B0585050E070
               70FFC06050FF9048405000000000000000000000000000000000000000000000
               000000000000000000006068C0B03040B0C03040B0C06068B0FF}
+            Header.Font.Charset = DEFAULT_CHARSET
+            Header.Font.Color = clWindowText
+            Header.Font.Height = -11
+            Header.Font.Name = 'Tahoma'
+            Header.Font.Style = []
             ParentFont = False
             Position = 1
             Sorted = True
@@ -437,6 +493,11 @@ object FormMain: TFormMain
             Font.Name = 'MS Sans Serif'
             Font.Style = []
             Header.Caption = #1041#1072#1085#1085#1077#1088' ('#1086#1089#1085#1086#1074#1085#1086#1081')'
+            Header.Font.Charset = DEFAULT_CHARSET
+            Header.Font.Color = clWindowText
+            Header.Font.Height = -11
+            Header.Font.Name = 'Tahoma'
+            Header.Font.Style = []
             ParentFont = False
             Position = 2
             SortType = stAlphabetic
@@ -446,6 +507,10 @@ object FormMain: TFormMain
       end
       object sTabSheet3: TsTabSheet
         Caption = #1056#1072#1073#1086#1090#1072' '#1089' '#1073#1072#1079#1086#1081
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object btnImageExistingCheck: TsSpeedButton
           Left = 13
           Top = 20
@@ -467,7 +532,7 @@ object FormMain: TFormMain
           Visible = False
           SkinData.SkinSection = 'GAUGE'
           ForeColor = clBlack
-          MaxValue = 100
+          Progress = 0
           Suffix = '%'
         end
         object btnEmailCheck: TsSpeedButton
@@ -510,8 +575,11 @@ object FormMain: TFormMain
           Top = 76
           Width = 881
           Height = 437
+          Touch.InteractiveGestures = [igPan, igPressAndTap]
+          Touch.InteractiveGestureOptions = [igoPanSingleFingerHorizontal, igoPanSingleFingerVertical, igoPanInertia, igoPanGutter, igoParentPassthrough]
           AppearanceOptions = [aoHideFocus, aoHighlightSlideCells]
           AutoScroll = True
+          Caption = ''
           HeaderSize = 25
           Options = [goDisableColumnMoving, goHeader, goSelectFullRow]
           TabOrder = 0

@@ -139,8 +139,7 @@ begin
   if ClearRows then
     SGFirm.ClearRows;
   IBQuery1.Close;
-  IBQuery1.SQL.Text := Request;
-  ;
+  IBQuery1.SQL.Text := Request;;
   if IBQuery1.ParamCount > 0 then
     IBQuery1.Params[0].AsString := ID;
   IBQuery1.Open;
@@ -256,9 +255,12 @@ procedure TFormMain.sPageControl1Change(Sender: TObject);
 begin
   editSearch.Clear;
   case sPageControl1.ActivePageIndex of
-    0: btnSettings.Enabled := True;
-    1: btnSettings.Enabled := True;
-    2: btnSettings.Enabled := False;
+    0:
+      btnSettings.Enabled := True;
+    1:
+      btnSettings.Enabled := True;
+    2:
+      btnSettings.Enabled := False;
   end;
 end;
 
@@ -276,10 +278,10 @@ begin
       if RowVisible[i - 1] then
         inc(n, 1);
       if Odd(n) then
-        C := $00EDE9EB {clMenuBar}
+        C := $00EDE9EB { clMenuBar }
       else
         C := clWindow;
-      if Name = 'SGFirm' then
+      if name = 'SGFirm' then
       begin
         Cell[0, i - 1].Color := C;
         if Cell[1, i - 1].Color <> $008888FF then
@@ -295,7 +297,7 @@ begin
         if Trim(Cells[6, i - 1]) = '' then
           Cell[6, i - 1].Color := C;
       end;
-      if Name = 'SGRubr' then
+      if name = 'SGRubr' then
       begin
         Cell[0, i - 1].Color := C;
         Cell[1, i - 1].Color := C;
@@ -540,7 +542,7 @@ begin
   for i := 0 to SGRubr.RowCount - 1 do
   begin
     banner_Rubr := Trim(SGRubr.Cells[2, i]);
-    if ((banner_Rubr <> '') and not (FileExists(AppPath + 'Pic\' + banner_Rubr))) then
+    if ((banner_Rubr <> '') and not(FileExists(AppPath + 'Pic\' + banner_Rubr))) then
     begin
       SGDataUtils.AddRow;
       SGDataUtils.Cells[0, SGDataUtils.LastAddedRow] := 'Рубрика';
@@ -566,11 +568,12 @@ function TFormMain.IsValidEmail(const Value: string): Boolean;
     Result := false;
     for i := 1 to Length(s) do
     begin
-      if not (s[i] in ['a'..'z', 'A'..'Z', '0'..'9', '_', '-', '.', '&']) then
+      if not(s[i] in ['a' .. 'z', 'A' .. 'Z', '0' .. '9', '_', '-', '.', '&']) then
         exit;
     end;
     Result := true;
   end;
+
 var
   i: integer;
   namePart, serverPart: string;
@@ -598,11 +601,12 @@ function TFormMain.IsValidWeb(const Value: string): Boolean;
     Result := false;
     for i := 1 to Length(s) do
     begin
-      if not (s[i] in ['a'..'z', 'A'..'Z', '0'..'9', '_', '-', '.']) then
+      if not(s[i] in ['a' .. 'z', 'A' .. 'Z', '0' .. '9', '_', '-', '.']) then
         exit;
     end;
     Result := true;
   end;
+
 var
   i: integer;
   wwwPart, domenPart: string;
