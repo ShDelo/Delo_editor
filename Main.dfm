@@ -98,7 +98,6 @@ object FormMain: TFormMain
         ParentFont = False
         TabOrder = 0
         OnChange = editSearchChange
-        ExplicitHeight = 24
       end
     end
     object sPageControl1: TsPageControl
@@ -336,10 +335,6 @@ object FormMain: TFormMain
       end
       object sTabSheet2: TsTabSheet
         Caption = #1056#1091#1073#1088#1080#1082#1080
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object SGRubr: TNextGrid
           Left = 0
           Top = 0
@@ -507,10 +502,6 @@ object FormMain: TFormMain
       end
       object sTabSheet3: TsTabSheet
         Caption = #1056#1072#1073#1086#1090#1072' '#1089' '#1073#1072#1079#1086#1081
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object btnImageExistingCheck: TsSpeedButton
           Left = 13
           Top = 20
