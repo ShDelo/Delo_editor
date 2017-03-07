@@ -215,7 +215,7 @@ begin
   Q.SQL.Text := 'delete from ' + table + ' where ID = :ID';
   Q.ParamByName('ID').AsString := id;
   try
-    Q.Open;
+    Q.Execute;
     FormMain.IBTransaction1.CommitRetaining;
   finally
     Q.Close;
@@ -271,11 +271,12 @@ begin
   Query := QueryCreate;
   Query.SQL.Text := 'SELECT t1.id, t1.name, ''CURATOR'' as DIR FROM CURATOR as t1 UNION ALL ' +
     'SELECT t2.id, t2.name, ''RUBRIKATOR'' as DIR FROM RUBRIKATOR as t2 UNION ALL ' +
-    'SELECT t3.id, t3.name, ''TYPE'' as DIR FROM TYPE as t3 UNION ALL ' +
+    'SELECT t3.id, t3.name, ''FIRMTYPE'' as DIR FROM FIRMTYPE as t3 UNION ALL ' +
     'SELECT t4.id, t4.name, ''NAPRAVLENIE'' as DIR FROM NAPRAVLENIE as t4 UNION ALL ' +
     'SELECT t5.id, t5.name, ''OFFICETYPE'' as DIR FROM OFFICETYPE as t5 UNION ALL ' +
     'SELECT t6.id, t6.name, ''COUNTRY'' as DIR FROM COUNTRY as t6 UNION ALL ' +
-    'SELECT t7.id, t7.name, ''GOROD'' as DIR FROM GOROD as t7';
+    'SELECT t7.id, t7.name, ''REGION'' as DIR FROM REGION as t7 UNION ALL ' +
+    'SELECT t8.id, t8.name, ''CITY'' as DIR FROM CITY as t8';
   try
     Query.Open;
   except
@@ -324,11 +325,11 @@ begin
           strDirType := 'Рубрика';
         end;
       end
-      else if strDIR = 'TYPE' then
+      else if strDIR = 'FIRMTYPE' then
       begin
-        if not CheckDirectoryIsInUse('TYPE', '%#' + strID + '$%') then
+        if not CheckDirectoryIsInUse('FIRMTYPE', '%#' + strID + '$%') then
         begin
-          DeleteDirectoryByID('TYPE', strID);
+          DeleteDirectoryByID('FIRMTYPE', strID);
           isDeleted := true;
           strDirType := 'Тип фирмы';
         end;
@@ -360,11 +361,20 @@ begin
           strDirType := 'Страна';
         end;
       end
-      else if strDIR = 'GOROD' then
+      else if strDIR = 'REGION' then
+      begin
+        if not CheckDirectoryIsInUse('ADRES', '%#*' + strID + '$%') then
+        begin
+          DeleteDirectoryByID('REGION', strID);
+          isDeleted := true;
+          strDirType := 'Область';
+        end;
+      end
+      else if strDIR = 'CITY' then
       begin
         if not CheckDirectoryIsInUse('ADRES', '%#^' + strID + '$%') then
         begin
-          DeleteDirectoryByID('GOROD', strID);
+          DeleteDirectoryByID('CITY', strID);
           isDeleted := true;
           strDirType := 'Город';
         end;
